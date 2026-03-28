@@ -1,0 +1,43 @@
+FROM node:20-bookworm
+
+# This is a dockerfile for a developer machine to run po-tracker, claude and playwright
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Base tools
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    git \
+    curl \
+    bash \
+    ca-certificates \
+    ripgrep \
+    less \
+    procps \
+    libnotify-bin \
+    && rm -rf /var/lib/apt/lists/*
+
+    # Claude Code CLI
+RUN npm install -g @anthropic-ai/claude-code
+
+# Python testing stack + Playwright Python package
+# Remove these blocks if your project doesn't need Python/browser automation (~1.5GB)
+RUN python3 -m pip install --break-system-packages --upgrade pip && \
+    python3 -m pip install --break-system-packages \
+      pytest \
+      pytest-playwright \
+      playwright
+
+# Install Chromium and all required system deps for Playwright
+RUN python3 -m playwright install --with-deps chromium
+
+EXPOSE 5000
+
+WORKDIR /workspace
+
+# Keep the container alive; you exec into it and work interactively.
+CMD ["bash", "-lc", "sleep infinity"]

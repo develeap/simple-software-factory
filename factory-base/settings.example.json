@@ -1,0 +1,27 @@
+{
+  "skipDangerousModePermissionPrompt": true,
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "date +%s > /tmp/claude_task_start"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/private-agent-instructions/notify-user.sh 90"
+          }
+        ]
+      }
+    ]
+  }
+}

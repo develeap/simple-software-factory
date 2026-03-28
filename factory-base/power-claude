@@ -1,0 +1,4 @@
+# CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 ensures CLAUDE.md files inside
+# the --add-dir path are loaded into Claude's context (not just file access granted)
+CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 \
+claude --dangerously-skip-permissions --add-dir /private-agent-instructions/
