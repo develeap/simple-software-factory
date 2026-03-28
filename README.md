@@ -21,8 +21,9 @@ This is a starting point, not a complete solution. Once you outgrow it, customiz
 ## Quick start
 
 ```bash
-# Create a factory folder (optionally clone a git repo into src/)
-./create-factory.sh my-project ~/factories/my-project
+# Create a factory folder using one of these:
+./create-factory.sh my-project ~/factories/my-project # new, empty proj
+./create-factory.sh my-project ~/factories/my-project git@github.com:you/your-repo.git
 ./create-factory.sh my-project ~/factories/my-project https://github.com/you/your-repo
 
 # Enter the container (starts it if needed)
@@ -88,7 +89,9 @@ Stops the Docker container and shuts down the notification listener on the host.
 
 Once you're comfortable here:
 - Customize `dockerfile.dev` to match your actual stack (e.g. remove Playwright if you don't need it)
-- Install [Trycycle](https://github.com/danshapiro/trycycle) or [SuperPowers](https://github.com/obra/superpowers) inside the container for long autonomous runs
+- Install [Trycycle](https://github.com/danshapiro/trycycle) and/or [SuperPowers](https://github.com/obra/superpowers) inside the container for long autonomous runs
+  - Just say "Please install Trycycle(https://github.com/danshapiro/trycycle)"
+  - Use /plugin to add superpowers
 - Add agent instructions in `private-agent-instructions/CLAUDE.md`
 - Add a `CLAUDE.md` to `src/` to give Claude project-specific context which you want shared
 - Change the notification method to something else that fits your need, e.g. `aplay "tada.mp3"`

@@ -7,6 +7,7 @@ GITREPO="${3:-}"
 
 if [[ -z "$FACTORY" || -z "$FACTORYFOLDER" ]]; then
   echo "Usage: $0 <factory-name> <factory-folder> [git-repo]"
+  echo "example: $0 my-project ~/factories/my-project git@github.com:you/your-repo.git"
   exit 1
 fi
 
