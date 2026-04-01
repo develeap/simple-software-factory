@@ -19,5 +19,5 @@ $DC exec --workdir /workspace --user $U:$G dev bash -c \
   '[ -f ~/.claude/settings.json ] || { mkdir -p ~/.claude && cp /private-agent-instructions/settings.example.json ~/.claude/settings.json && echo "Installed Claude settings (notifications enabled)."; }'
 
 echo "To start Claude: /private-agent-instructions/power-claude"
-echo "We strongly recommend that you use trycycle and superpowers for long running tasks.
+echo "We strongly recommend that you use trycycle and superpowers for long running tasks."
 exec $DC exec --workdir /workspace --user $U:$G dev bash
